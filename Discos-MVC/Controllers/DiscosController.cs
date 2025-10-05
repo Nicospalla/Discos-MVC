@@ -86,7 +86,9 @@ namespace Discos_MVC.Controllers
         // GET: DiscosController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            DiscoNegocio discoNegocio = new DiscoNegocio();
+            var disco = discoNegocio.listar().Find(x => x.Id == id);
+            return View(disco);
         }
 
         // POST: DiscosController/Delete/5
@@ -96,11 +98,13 @@ namespace Discos_MVC.Controllers
         {
             try
             {
+                DiscoNegocio discoNegocio = new DiscoNegocio();
+                discoNegocio.eliminar(id);
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
-                return View();
+                return View("Index");
             }
         }
     }
