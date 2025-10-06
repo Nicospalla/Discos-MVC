@@ -1,0 +1,90 @@
+﻿@model dominio.Disco
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+@* 
+<div class="row">
+    <div class="col-8">
+    <h4>Disco</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Titulo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Titulo)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FechaLanzamiento)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FechaLanzamiento)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CantidadCanciones)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CantidadCanciones)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Estilo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Estilo.Descripcion)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TipoEdicion)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TipoEdicion.Descripcion)
+        </dd>
+    </dl>
+    </div >
+    <div class="col-4">
+        <img src="@Model.UrlTapa"  style="max-height:250px" class="img-fluid" />
+    </div>
+</div> *@
+<div class="row align-items-start">
+    <div class="col-12 col-lg-8">
+        <h4>Disco</h4>
+        <hr />
+        <div class="table-responsive">
+            <table class="table table-borderless mb-0">
+                <tbody>
+                    <tr>
+                        <th scope="row" class="w-25">@Html.DisplayNameFor(model => model.Titulo)</th>
+                        <td>@Html.DisplayFor(model => model.Titulo)</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">@Html.DisplayNameFor(model => model.FechaLanzamiento)</th>
+                        <td>@Html.DisplayFor(model => model.FechaLanzamiento)</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">@Html.DisplayNameFor(model => model.CantidadCanciones)</th>
+                        <td>@Html.DisplayFor(model => model.CantidadCanciones)</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">@Html.DisplayNameFor(model => model.Estilo)</th>
+                        <td>@Html.DisplayFor(model => model.Estilo.Descripcion)</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">@Html.DisplayNameFor(model => model.TipoEdicion)</th>
+                        <td>@Html.DisplayFor(model => model.TipoEdicion.Descripcion)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="col-12 col-lg-4 text-center d-flex align-items-center justify-content-center mt-3 mt-lg-0">
+        <img src="@Model.UrlTapa" style="max-height:250px" class="img-fluid rounded shadow" />
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>

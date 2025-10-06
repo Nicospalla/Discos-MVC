@@ -22,22 +22,33 @@ namespace Discos_MVC.Controllers
         // GET: DiscosController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            DiscoNegocio discoNegocio = new DiscoNegocio();
+            var disco = discoNegocio.listar().Find(p => p.Id == id);
+            return View(disco);
         }
 
         // GET: DiscosController/Create
         public ActionResult Create()
         {
+            EstiloNegocio estilo =new EstiloNegocio();
+            TipoEdicionNegocio tipoEdicion = new TipoEdicionNegocio();
+            var estilos = estilo.listar();
+            var ediciones = tipoEdicion.listar();
+            ViewBag.estilo = new SelectList(estilos, "Id", "Descripcion"); 
+            ViewBag.tipoEdicion = new SelectList (ediciones, "Id", "Descripcion");
+
             return View();
         }
 
         // POST: DiscosController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(Disco disco)
         {
             try
             {
+                DiscoNegocio discoNegocio = new DiscoNegocio();
+                discoNegocio.agregar(disco);
                 return RedirectToAction(nameof(Index));
             }
             catch
